@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hsx.com.dao.SearchDao">
+
+  <resultMap type="GarbageClass" id="SearchResult">
+	<result property="id" column="id"/>
+	<result property="name" column="name"/>
+	<result property="category" column="category"/>
+	<result property="advise" column="advise"/>
+  </resultMap>
+
+  <select id="searchsetup" resultMap="SearchResult">
+	<!-- select * from classification where name=#{name} -->
+	select * from classification where name like CONCAT(CONCAT('%',#{name}),'%') 		
+  </select>
+	
+  <insert id="garbagesetup">
+   insert into classification (name,category,advise) values (#{name},#{category},#{advise})
+  </insert> 
+   
+</mapper> 

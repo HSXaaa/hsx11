@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hsx.com.dao.UserDao">
+
+  <resultMap type="User" id="UserResult">
+	<result property="id" column="id"/>
+	<result property="username" column="username"/>
+	<result property="portrait" column="portrait"/>
+  </resultMap>
+
+   <select id="judgeusernamesetup" resultType="java.lang.Integer">
+	select count(*) from user where username = #{username}		
+   </select>
+
+   <insert id="nmandpicsetup">
+     insert into user (username,portrait) values (#{username},#{portrait}) 
+   <!--往数据库插入一条数据，返回插入数据的自增id -->
+   <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+     SELECT LAST_INSERT_ID() AS id
+   </selectKey>     
+   </insert>
+
+   <select id="getidsetup" resultType="java.lang.Integer">
+	select id from user where username = #{username}		
+   </select>
+   
+   <select id="readallusersetup" resultMap="UserResult">
+	select * from user		
+   </select>   
+      
+</mapper> 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hsx.com.dao.DeleteGbgDao">
+
+	<resultMap type="GarbageClass" id="DeleteGbgResult">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="category" column="category"/>
+		<result property="advise" column="advise"/>
+	</resultMap>
+	
+   <delete id="deletegbgsetup">
+    delete from classification where id = #{id}
+   </delete>
+   
+</mapper> 

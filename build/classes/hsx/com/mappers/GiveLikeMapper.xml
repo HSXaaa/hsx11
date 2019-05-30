@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hsx.com.dao.GiveLikeDao">
+
+	<resultMap type="GiveLike" id="GiveLikeResult">
+		<result property="id" column="id"/>
+		<result property="amount" column="amount"/>
+		<result property="publishId" column="publishId"/>
+	</resultMap>
+	
+   <update id="giveLikesetup">
+    update givelike set amount=amount+1 where publishId = #{publishId}
+   </update>  
+   
+   <select id="giveLikeAmountsetup" resultMap="GiveLikeResult">
+    select * from givelike where publishId = #{publishId}
+   </select> 
+   
+   <insert id="amountsetup">
+   insert into givelike (amount,publishId) values (0,#{publishId})
+   </insert> 
+   
+   <delete id="deletegivelikesetup">
+    delete from givelike where publishId=#{publishId}
+   </delete>   
+   
+</mapper> 
